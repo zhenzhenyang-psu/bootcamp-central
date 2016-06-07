@@ -10,7 +10,7 @@ This file is located in [share/participants.md][url]. Use the following format:
 * Naomi Altman, Dept. of Statistics, Penn State
 * Shefali Setia Verma, Bioinformatics and Genomics, Penn State
 * Istvan Albert, Biochemistry and Molecular Biology, Penn State
-* Zhenzhen Yang, Biology, Penn State
+* Zhenzhen Yang, Biology, Penn State, really?
 * Lila Rieber, Biochemistry and Molecular Biology, Penn State
 * Wanyan Wang, Plant Biology, Penn State
 * Lihua Wu Plant Biology Program, Penn State University
