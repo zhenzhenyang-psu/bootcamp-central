@@ -1,0 +1,12 @@
+---
+title: "My2ndRmarkdown"
+author: "Zhenzhen Yang, yangzhenzhen1988@gmail.com"
+date: "June 8, 2016"
+output: html_document
+---
+#$ is for laytex
+The sine of $\pi/2$ is `r round(sin(pi/2),2)`
+``` {r sessionInformation}
+sessionInfo()
+```
+
