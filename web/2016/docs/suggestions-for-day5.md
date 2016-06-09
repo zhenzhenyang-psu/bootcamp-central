@@ -8,3 +8,4 @@ What should be cover during day 5:
 * Comparison of creating reports with R markdown vs Jupyter.
 * Using Plotly and Jupyter to generate interactive plots.
 * How to choose simple statistical tests.
+*show us how to improve figures using plot and related functions in gplot or gplot2 of R, for example, changing label, or legend of many kinds of plots - boxplot, clustering plots, scatterplot, and so on
