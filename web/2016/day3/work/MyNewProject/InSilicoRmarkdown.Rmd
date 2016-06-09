@@ -1,0 +1,52 @@
+---
+title: "InSilico"
+author: "Zhenzhen Yang, yangzhenzhen1988@gmail.com"
+date: "June 8, 2016"
+output: html_document
+---
+.Random.seed generates a list of random numbers
+
+0. set variables for number of genes and samples
+```{r SampleGeneNumber}
+ngenes = 1000
+nsamples = 20
+```
+
+1. generate 20 phenotypic scores (or save random seed by: .Random.seed=myseed)
+```{r PhenoScore}
+set.seed(2016)
+pheno = rnorm(nsamples)
+
+```
+
+2. generate a gene expression matrix with 1000 genes and 20 columns
+```{r geneMatrix}
+genes = matrix(rnorm(ngenes*nsamples),nrow=ngenes,ncol=nsamples)
+hist(genes,nclass=50)
+```
+
+3. compute the correlation between gene expression and phenotypic scores
+```{r computerCor}
+cors = rep(0,1000)
+for (i in 1:ngenes) {cors[i] = cor(pheno,genes[i,])}
+hist(cors,nclass=50)
+genesNew = cbind(genes,cors)
+#head(genesNew)
+sortedGenes = genesNew[order(genesNew[,(nsamples+1)],decreasing=T),]
+top = sortedGenes[1:10,]
+top
+```
+
+4. cor and cor.test
+``` {r cor and cor.test}
+corout = cor(genes[1,],pheno)
+cortestout = cor.test(genes[1,],pheno)
+class(cortestout)
+tout = t.test(genes[1,],pheno)
+tout
+names(tout)
+class(tout)
+names(cortestout)
+cortestout$data.name
+cortestout$statistic
+```

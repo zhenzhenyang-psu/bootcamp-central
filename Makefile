@@ -17,6 +17,13 @@ WEB_PATH=${WEB_HOST}:${WEB_DIR}
 all:
 	pyblue -r ${HTML_DIR}
 
+pull:
+	git pull https://github.com/biostars/bootcamp-central.git
+
+update:
+	git commit -am "upload today's changes to the github website" 
+	git push
+
 # Removes the temporary directory.
 clean:
 	rm -rf ${TEMP_DIR}

@@ -24,6 +24,7 @@ In this example, I preprocessed the data by adding the reads across the 2 lanes 
 To start, we need to load the data into R from the csv text file
 
 ```{r readData}
+setwd("~/temp/bootcamp-central/web/2016/day3/docs")
 ReadCounts=read.csv("liverReads.csv",header=T,row.names=1)
 ReadCounts[1:5,1:5]
 dim(ReadCounts)
@@ -36,6 +37,7 @@ We have N=12 samples, with n=6 samples for each condition=species.  We have `r n
 The resampling bootstrap is the simplest method for creating synthetic data.
 
 To generate a sample from the null distribution, we simply select 12 samples with replacement from the 12 original samples.  We would retain the species label.
+you should toss the original samples
 
 ```{r nullResample}
 samp=sample(1:12,12,replace=TRUE)
@@ -56,6 +58,7 @@ e.g. We could do a differential expression analysis using our favorite RNA-seq s
 
 To generate a sample from the non-Null distribution, we sample with replacement from the original species labels.  Humans are in columns 1:6 and chimpanzees are in columns 7:12.
 
+#alternative is human is 1-6 columns, and chimps are from 7-12 columns
 ```{r nonNullResample}
 samp=c(sample(1:6,6,replace=TRUE),sample(7:12,6,replace=TRUE))
 bReadCounts=ReadCounts[,samp]
@@ -144,7 +147,7 @@ median(SDs)
 head(SDs[oGenes[1:10]])
 ```
 
-While it might make sense to transform the means and SDs of the proportions into the parameters of a distribution like the Beta, which generates data between 0 and 1, this method did not work well for these data, as it created distributions for some genes that essentially had only 1 proportion.  Instead, we add Normal noise, scaled by the SD, to the mean.  After scaling up by the library size to obtain a mean count, we replaced all the means that are less than 0.25 by 0.25.
+While it might make sense to transform the means and SDs of the proportions into the parameters of a distribution like the Beta (sampling distribution for each proportion), which generates data between 0 and 1, this method did not work well for these data, as it created distributions for some genes that essentially had only 1 proportion.  Instead, we add Normal noise, scaled by the SD, to the mean.  After scaling up by the library size to obtain a mean count, we replaced all the means that are less than 0.25 by 0.25.
 
 ```{r genProportions}
 bProp=ReadProp
