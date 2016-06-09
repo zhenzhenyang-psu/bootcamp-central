@@ -18,12 +18,18 @@ all:
 	pyblue -r ${HTML_DIR}
 
 pull:
+<<<<<<< HEAD
 	git pull https://github.com/biostars/bootcamp-central.git
 
 update:
 	git commit -am "upload today's changes to the github website" 
 	git push
 
+=======
+	# Bring this repository in sync with master.
+	git pull https://github.com/biostars/bootcamp-central.git
+
+>>>>>>> a888081ae658e2270ae65c34008affb4dd44b6bf
 # Removes the temporary directory.
 clean:
 	rm -rf ${TEMP_DIR}
